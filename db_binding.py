@@ -1,7 +1,6 @@
 # Libraries
 
 import psycopg2
-import psycopg2.errorcodes
 import time
 import logging
 import random
