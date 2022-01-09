@@ -1,2 +1,9 @@
 Flask
 gunicorn
+## Other Libraries
+pyservicebinding
+psycopg2
+psycopg2.errorcodes
+time
+logging
+random
