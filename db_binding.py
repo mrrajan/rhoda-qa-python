@@ -1,9 +1,6 @@
 # Libraries
 
 import psycopg2
-import time
-import logging
-import random
 from pyservicebinding import binding
  
 # DB Binding Function 
