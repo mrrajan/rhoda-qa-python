@@ -8,7 +8,7 @@ application = Flask(__name__)
 @application.route('/')
 @application.route('/status')
 def status():
-    return jsonify({'status': 'ok ver1.0'})
+    return jsonify({'status': 'ok ver1.1'})
 
 
 @application.route('/dbbind', methods=['POST'])
