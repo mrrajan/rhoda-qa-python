@@ -7,5 +7,5 @@ from pyservicebinding import binding
 def db_bind(args_dict):
 #     arg = args_dict.get('arg1')
 #     predictor(arg)
-    return {'DB Binding': 'not implemented but reqs included'}
+    return {'DB Binding': 'not implemented but reqs included', 'key1': 'value1', 'key2': 'value2'}
 
