@@ -3,6 +3,3 @@ gunicorn
 ## Other Libraries
 pyservicebinding
 psycopg2
-time
-logging
-random
