@@ -1,3 +1,4 @@
+import os
 import json
 from flask import Flask, jsonify, request
 from db_binding import db_bind
@@ -8,7 +9,10 @@ application = Flask(__name__)
 @application.route('/')
 @application.route('/status')
 def status():
-    return jsonify({'status': 'ok ver1.1'})
+    if 'SERVICE_BINDING_ROOT' in os.environ:
+    	return jsonify({'status': 'DB binding ok'})
+    else:
+    	return jsonify({'status': 'DB binding missing'})
 
 
 @application.route('/dbbind', methods=['POST'])
