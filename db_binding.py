@@ -4,6 +4,7 @@ from pyservicebinding import binding
  
 # DB Binding Function 
 def db_bind(args_dict):
+    print(args_dict)
     try:
         sb = binding.ServiceBinding()
     except binding.ServiceBindingRootMissingError as msg:
