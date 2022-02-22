@@ -3,3 +3,5 @@ gunicorn
 ## Other Libraries
 pyservicebinding
 psycopg2
+requests
+pandas
