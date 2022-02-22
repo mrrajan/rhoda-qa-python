@@ -1,1 +1,1 @@
-# vs-python-db-test2
+# RHODA QA Test Program using Python
