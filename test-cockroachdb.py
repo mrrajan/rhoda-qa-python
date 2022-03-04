@@ -6,26 +6,26 @@ import time
 import logging
 import random
 import pandas as pd
+from pyservicebinding import binding
 #
 response = requests.get('http://localhost:8080')
 jresponse = response.json()
 if jresponse['status'] != "DB binding ok":
   print(jresponse['status'])
   exit(1)
-response = requests.post('http://localhost:8080/dbbind', '{"type": "postgresql", "provider":"CockroachDB Cloud"}')
-jresponse = response.json()
-
-#
-db_connection = psycopg2.connect(database=jresponse['database'], \
-    user=jresponse['user'], \
-    password=jresponse['password'], \
-    sslmode='verify-full', \
-    sslrootcert='./certs/root.crt', \
-    host=jresponse['host'], \
-    options='--cluster=test-cluster-5629', \
-    port=jresponse['port'])
+sb = binding.ServiceBinding()
+bindings_list = sb.bindings('postgresql', 'CockroachDB Cloud')
+with open('./root.crt', 'w') as f:
+    f.write(bindings_list[0].get('root.crt'))
+db_connection = psycopg2.connect(database=bindings_list[0].get('database'), \
+    user=bindings_list[0].get('username'), \
+    password=bindings_list[0].get('password'), \
+    sslmode=bindings_list[0].get('sslmode'), \
+    sslrootcert='./root.crt', \
+    host=bindings_list[0].get('host'), \
+    options=bindings_list[0].get('options'), \
+    port=bindings_list[0].get('port'))
 print(db_connection)
-
 #
 def create_accounts(conn):
     with conn.cursor() as cur:
