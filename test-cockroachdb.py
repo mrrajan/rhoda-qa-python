@@ -29,14 +29,14 @@ print(db_connection)
 #
 def create_accounts(conn):
     with conn.cursor() as cur:
-        cur.execute('CREATE TABLE IF NOT EXISTS accounts (id INT PRIMARY KEY, balance INT)')
+        cur.execute('CREATE TABLE accounts (id INT PRIMARY KEY, balance INT)')
         cur.execute('INSERT INTO accounts (id, balance) VALUES (1, 1000), (2, 250)')
         logging.debug("create_accounts(): status message: {}".format(cur.statusmessage))
     conn.commit()
 #
 def delete_table(conn):
     with conn.cursor() as cur:
-        cur.execute("DROP TABLE accounts")
+        cur.execute("DROP TABLE IF EXISTS accounts")
         logging.debug("delete_accounts(): status message: {}".format(cur.statusmessage))
     conn.commit()
 
