@@ -14,7 +14,9 @@ if jresponse['status'] != "DB binding ok":
   print(jresponse['status'])
   exit(1)
 sb = binding.ServiceBinding()
-bindings_list = sb.bindings('postgresql', 'CockroachDB Cloud')
+print(sb.all_bindings())
+for x in sb.all_bindings():
+    bindings_list = sb.bindings('postgresql', 'CockroachDB Cloud')
 with open('./root.crt', 'w') as f:
     f.write(bindings_list[0].get('root.crt'))
 db_connection = psycopg2.connect(database=bindings_list[0].get('database'), \
